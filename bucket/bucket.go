@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3iface"
 	"github.com/nabeken/aws-go-s3/bucket/option"
@@ -56,6 +57,22 @@ func (b *Bucket) HeadObject(key string, opts ...option.HeadObjectInput) (*s3.Hea
 	}
 
 	return b.S3.HeadObject(req)
+}
+
+// ExistsObject returns true if key does not exist on bucket.
+func (b *Bucket) ExistsObject(key string, opts ...option.HeadObjectInput) (bool, error) {
+	_, err := b.HeadObject(key, opts...)
+	if err == nil {
+		return true, nil
+	}
+
+	if s3err, ok := err.(awserr.Error); ok && s3err.Code() == "NoSuchKey" {
+		// actually key does not exist
+		return false, nil
+	}
+
+	// in some error situation
+	return false, err
 }
 
 // PutObject puts an object with reading data from reader.
