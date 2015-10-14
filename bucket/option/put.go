@@ -22,3 +22,17 @@ func ACLPrivate() PutObjectInput {
 		req.ACL = aws.String(s3.ObjectCannedACLPrivate)
 	}
 }
+
+// ContentType returns a PutObjectInput that set Content-Type.
+func ContentType(ct string) PutObjectInput {
+	return func(req *s3.PutObjectInput) {
+		req.ContentType = aws.String(ct)
+	}
+}
+
+// ContentLength returns a PutObjectInput that set Content-Length.
+func ContentLength(length int) PutObjectInput {
+	return func(req *s3.PutObjectInput) {
+		req.ContentLength = aws.Int64(int64(length))
+	}
+}
