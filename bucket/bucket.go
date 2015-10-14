@@ -15,6 +15,7 @@ type Bucket struct {
 	Name *string
 }
 
+// New returns Bucket instance with bucket name name.
 func New(s s3iface.S3API, name string) *Bucket {
 	return &Bucket{
 		S3:   s,
@@ -41,7 +42,7 @@ func (b *Bucket) GetObjectReader(key string, opts ...option.GetObjectInput) (io.
 	return resp.Body, nil
 }
 
-// HeadObjectReader retrieves an object metadata for key.
+// HeadObject retrieves an object metadata for key.
 func (b *Bucket) HeadObject(key string, opts ...option.HeadObjectInput) (*s3.HeadObjectOutput, error) {
 	req := &s3.HeadObjectInput{
 		Bucket: b.Name,
@@ -55,7 +56,7 @@ func (b *Bucket) HeadObject(key string, opts ...option.HeadObjectInput) (*s3.Hea
 	return b.S3.HeadObject(req)
 }
 
-// PutObjectReader puts an object with reading data from reader.
+// PutObject puts an object with reading data from reader.
 func (b *Bucket) PutObject(key string, rs io.ReadSeeker, opts ...option.PutObjectInput) (*s3.PutObjectOutput, error) {
 	req := &s3.PutObjectInput{
 		Bucket: b.Name,
