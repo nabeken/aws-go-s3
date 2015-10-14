@@ -15,3 +15,10 @@ func SSEKMSKeyID(keyID string) PutObjectInput {
 		req.SSEKMSKeyId = aws.String(keyID)
 	}
 }
+
+// ACLPrivate returns a PutObjectInput that set ACL private.
+func ACLPrivate() PutObjectInput {
+	return func(req *s3.PutObjectInput) {
+		req.ACL = aws.String(s3.ObjectCannedACLPrivate)
+	}
+}
