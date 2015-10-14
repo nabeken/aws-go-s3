@@ -31,8 +31,8 @@ func ContentType(ct string) PutObjectInput {
 }
 
 // ContentLength returns a PutObjectInput that set Content-Length.
-func ContentLength(length int) PutObjectInput {
+func ContentLength(length int64) PutObjectInput {
 	return func(req *s3.PutObjectInput) {
-		req.ContentLength = aws.Int64(int64(length))
+		req.ContentLength = aws.Int64(length)
 	}
 }
