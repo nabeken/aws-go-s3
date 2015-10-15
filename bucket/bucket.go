@@ -27,8 +27,8 @@ func New(s s3iface.S3API, name string) *Bucket {
 	}
 }
 
-// GetObjectReader returns a reader assosiated with body. A caller of this MUST close the reader when it finishes reading.
-func (b *Bucket) GetObjectReader(key string, opts ...option.GetObjectInput) (io.ReadCloser, error) {
+// GetObject returns the s3.GetObjectOutput.
+func (b *Bucket) GetObject(key string, opts ...option.GetObjectInput) (*s3.GetObjectOutput, error) {
 	req := &s3.GetObjectInput{
 		Bucket: b.Name,
 		Key:    aws.String(key),
@@ -38,7 +38,12 @@ func (b *Bucket) GetObjectReader(key string, opts ...option.GetObjectInput) (io.
 		f(req)
 	}
 
-	resp, err := b.S3.GetObject(req)
+	return b.S3.GetObject(req)
+}
+
+// GetObjectReader returns a reader assosiated with body. A caller of this MUST close the reader when it finishes reading.
+func (b *Bucket) GetObjectReader(key string, opts ...option.GetObjectInput) (io.ReadCloser, error) {
+	resp, err := b.GetObject(key, opts...)
 	if err != nil {
 		return nil, err
 	}
