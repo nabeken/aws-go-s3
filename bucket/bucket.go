@@ -3,6 +3,7 @@ package bucket
 import (
 	"io"
 	"io/ioutil"
+	"net/http"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -66,7 +67,7 @@ func (b *Bucket) ExistsObject(key string, opts ...option.HeadObjectInput) (bool,
 		return true, nil
 	}
 
-	if s3err, ok := err.(awserr.Error); ok && s3err.Code() == "NoSuchKey" {
+	if s3err, ok := err.(awserr.RequestFailure); ok && s3err.StatusCode() == http.StatusNotFound {
 		// actually key does not exist
 		return false, nil
 	}
