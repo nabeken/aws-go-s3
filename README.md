@@ -15,6 +15,6 @@ You can specify the bucket name in environment variable.
 
 ```sh
 $ cd bucket
-$ export TEST_S3_QUEUE_NAME=aws-go-s3-test
+$ export TEST_S3_BUCKET_NAME=aws-go-s3-test
 $ go test -v
 ```
