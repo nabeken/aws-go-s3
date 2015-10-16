@@ -11,6 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/nabeken/aws-go-s3/bucket/option"
+	"github.com/nabeken/aws-go-s3/ioutils"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -47,7 +48,7 @@ func (s *BucketSuite) TestObject() {
 	ct := "application/json"
 	cl := int64(len(s.testdata))
 
-	content, err := NewFileReadSeeker(bytes.NewReader(s.testdata))
+	content, err := ioutils.NewFileReadSeeker(bytes.NewReader(s.testdata))
 	if !s.NoError(err) {
 		return
 	}

@@ -2,9 +2,7 @@ package bucket
 
 import (
 	"io"
-	"io/ioutil"
 	"net/http"
-	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -104,49 +102,4 @@ func (b *Bucket) DeleteObject(key string) (*s3.DeleteObjectOutput, error) {
 	}
 
 	return b.S3.DeleteObject(req)
-}
-
-// FileReadSeeker is tempfile-based io.ReadSeeker implementation.
-type FileReadSeeker struct {
-	file *os.File
-}
-
-// Close closes underlying tempfile and remove it.
-func (f *FileReadSeeker) Close() error {
-	if err := f.file.Close(); err != nil {
-		return err
-	}
-
-	return os.Remove(f.file.Name())
-}
-
-// Read implements io.Reader with underlying tempfile.
-func (f *FileReadSeeker) Read(p []byte) (int, error) {
-	return f.file.Read(p)
-}
-
-// Seek implements io.Seeker with underlying tempfile.
-func (f *FileReadSeeker) Seek(offset int64, whence int) (int64, error) {
-	return f.file.Seek(offset, whence)
-}
-
-// NewFileReadSeeker returns FileReadSeeker with reading data from r.
-// If you want to reuse it, you must rewind.
-func NewFileReadSeeker(r io.Reader) (*FileReadSeeker, error) {
-	f, err := ioutil.TempFile("", "")
-	if err != nil {
-		return nil, err
-	}
-
-	if _, err := io.Copy(f, r); err != nil {
-		return nil, err
-	}
-
-	if _, err := f.Seek(0, 0); err != nil {
-		return nil, err
-	}
-
-	return &FileReadSeeker{
-		file: f,
-	}, nil
 }
