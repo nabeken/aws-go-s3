@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/nabeken/aws-go-s3/bucket/option"
 	"github.com/nabeken/aws-go-s3/ioutils"
@@ -16,7 +16,7 @@ import (
 )
 
 func testS3Bucket(name string) *Bucket {
-	return New(s3.New(&aws.Config{Region: aws.String("ap-northeast-1")}), name)
+	return New(s3.New(session.New()), name)
 }
 
 type BucketSuite struct {
