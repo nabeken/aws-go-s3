@@ -23,6 +23,13 @@ func ACLPrivate() PutObjectInput {
 	}
 }
 
+// ACLPublicRead returns a PutObjectInput that set ACL public-read.
+func ACLPublicRead() PutObjectInput {
+	return func(req *s3.PutObjectInput) {
+		req.ACL = aws.String(s3.ObjectCannedACLPublicRead)
+	}
+}
+
 // ContentType returns a PutObjectInput that set Content-Type.
 func ContentType(ct string) PutObjectInput {
 	return func(req *s3.PutObjectInput) {
