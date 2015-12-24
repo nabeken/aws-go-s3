@@ -13,6 +13,7 @@ type PutObjectInput func(req *s3.PutObjectInput)
 func SSEKMSKeyID(keyID string) PutObjectInput {
 	return func(req *s3.PutObjectInput) {
 		req.SSEKMSKeyId = aws.String(keyID)
+		req.ServerSideEncryption = aws.String("aws:kms")
 	}
 }
 
