@@ -103,3 +103,17 @@ func (b *Bucket) DeleteObject(key string) (*s3.DeleteObjectOutput, error) {
 
 	return b.S3.DeleteObject(req)
 }
+
+// ListObjects lists objects that has prefix.
+func (b *Bucket) ListObjects(prefix string, opts ...option.ListObjectsInput) (*s3.ListObjectsOutput, error) {
+	req := &s3.ListObjectsInput{
+		Bucket: b.Name,
+		Prefix: aws.String(prefix),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.ListObjects(req)
+}
