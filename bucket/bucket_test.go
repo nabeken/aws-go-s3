@@ -36,9 +36,7 @@ func (s *BucketSuite) SetupSuite() {
 	s.bucket = testS3Bucket(name)
 
 	data, err := json.Marshal(struct{ Time time.Time }{Time: time.Now()})
-	if !s.NoError(err) {
-		s.T().Fatal(err)
-	}
+	s.Require().NoError(err)
 
 	s.testdata = data
 }
@@ -49,9 +47,7 @@ func (s *BucketSuite) TestObject() {
 	cl := int64(len(s.testdata))
 
 	content, err := ioutils.NewFileReadSeeker(bytes.NewReader(s.testdata))
-	if !s.NoError(err) {
-		return
-	}
+	s.Require().NoError(err)
 	defer content.Close()
 
 	// 1. Put new object
@@ -64,22 +60,16 @@ func (s *BucketSuite) TestObject() {
 			option.ACLPrivate(),
 		)
 
-		if !s.NoError(err) {
-			return
-		}
+		s.Require().NoError(err)
 	}
 
 	// 2. Get the object and assert its metadata and content
 	{
 		object, err := s.bucket.GetObject(key)
-		if !s.NoError(err) {
-			return
-		}
+		s.Require().NoError(err)
 
 		body, err := ioutil.ReadAll(object.Body)
-		if !s.NoError(err) {
-			return
-		}
+		s.Require().NoError(err)
 		defer object.Body.Close()
 
 		s.Equal(ct, *object.ContentType)
@@ -97,9 +87,7 @@ func (s *BucketSuite) TestObject() {
 	// 4. Delete the object
 	{
 		_, err := s.bucket.DeleteObject(key)
-		if !s.NoError(err) {
-			return
-		}
+		s.Require().NoError(err)
 	}
 
 	// 5. Head the object
