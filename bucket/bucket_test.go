@@ -42,7 +42,7 @@ func (s *BucketSuite) SetupSuite() {
 }
 
 func (s *BucketSuite) TestObject() {
-	key := "test-object"
+	origKey := "test-object"
 	ct := "application/json"
 	cl := int64(len(s.testdata))
 
@@ -50,10 +50,10 @@ func (s *BucketSuite) TestObject() {
 	s.Require().NoError(err)
 	defer content.Close()
 
-	// 1. Put new object
+	// Put new object
 	{
 		_, err := s.bucket.PutObject(
-			key,
+			origKey,
 			content,
 			option.ContentType(ct),
 			option.ContentLength(cl),
@@ -63,44 +63,52 @@ func (s *BucketSuite) TestObject() {
 		s.Require().NoError(err)
 	}
 
-	// 2. Get the object and assert its metadata and content
+	// Copy the object
 	{
-		object, err := s.bucket.GetObject(key)
-		s.Require().NoError(err)
-
-		body, err := ioutil.ReadAll(object.Body)
-		s.Require().NoError(err)
-		defer object.Body.Close()
-
-		s.Equal(ct, *object.ContentType)
-		s.Equal(cl, *object.ContentLength)
-		s.Equal(s.testdata, body)
-	}
-
-	// 3. The object must exist
-	{
-		exists, err := s.bucket.ExistsObject(key)
-		s.NoError(err)
-		s.True(exists)
-	}
-
-	// 4. Delete the object
-	{
-		_, err := s.bucket.DeleteObject(key)
+		_, err := s.bucket.CopyObject("copy-"+origKey, origKey)
 		s.Require().NoError(err)
 	}
 
-	// 5. Head the object
-	{
-		_, err := s.bucket.HeadObject(key)
-		s.Error(err)
-	}
+	for _, key := range []string{origKey, "copy-" + origKey} {
+		// Get the object and assert its metadata and content
+		{
+			object, err := s.bucket.GetObject(key)
+			s.Require().NoError(err)
 
-	// 6. The object must not exist
-	{
-		exists, err := s.bucket.ExistsObject(key)
-		s.NoError(err)
-		s.False(exists)
+			body, err := ioutil.ReadAll(object.Body)
+			s.Require().NoError(err)
+			defer object.Body.Close()
+
+			s.Equal(ct, *object.ContentType)
+			s.Equal(cl, *object.ContentLength)
+			s.Equal(s.testdata, body)
+		}
+
+		// The object must exist
+		{
+			exists, err := s.bucket.ExistsObject(key)
+			s.NoError(err)
+			s.True(exists)
+		}
+
+		// Delete the object
+		{
+			_, err := s.bucket.DeleteObject(key)
+			s.Require().NoError(err)
+		}
+
+		// Head the object
+		{
+			_, err := s.bucket.HeadObject(key)
+			s.Error(err)
+		}
+
+		// The object must not exist
+		{
+			exists, err := s.bucket.ExistsObject(key)
+			s.NoError(err)
+			s.False(exists)
+		}
 	}
 }
 

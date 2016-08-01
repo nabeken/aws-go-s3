@@ -3,6 +3,7 @@ package bucket
 import (
 	"io"
 	"net/http"
+	"net/url"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -116,4 +117,19 @@ func (b *Bucket) ListObjects(prefix string, opts ...option.ListObjectsInput) (*s
 	}
 
 	return b.S3.ListObjects(req)
+}
+
+// CopyObject copies an object within the bucket.
+func (b *Bucket) CopyObject(dest, src string, opts ...option.CopyObjectInput) (*s3.CopyObjectOutput, error) {
+	req := &s3.CopyObjectInput{
+		Bucket:     b.Name,
+		Key:        aws.String(dest),
+		CopySource: aws.String(aws.StringValue(b.Name) + "/" + url.QueryEscape(src)),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.CopyObject(req)
 }
