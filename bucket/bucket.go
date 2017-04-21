@@ -29,8 +29,16 @@ func New(s s3iface.S3API, name string) *Bucket {
 
 // GetObject returns the s3.GetObjectOutput.
 func (b *Bucket) GetObject(key string, opts ...option.GetObjectInput) (*s3.GetObjectOutput, error) {
-	req, out := b.GetObjectRequest(key, opts...)
-	return out, req.Send()
+	req := &s3.GetObjectInput{
+		Bucket: b.Name,
+		Key:    aws.String(key),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.GetObject(req)
 }
 
 // GetObjectReader returns a reader assosiated with body. A caller of this MUST close the reader when it finishes reading.
