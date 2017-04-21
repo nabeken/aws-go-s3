@@ -7,6 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3iface"
 	"github.com/nabeken/aws-go-s3/bucket/option"
@@ -48,6 +49,20 @@ func (b *Bucket) GetObjectReader(key string, opts ...option.GetObjectInput) (io.
 	}
 
 	return resp.Body, nil
+}
+
+// GetObjectRequest generates a "aws/request.Request" representing the client's request for the GetObject operation.
+func (b *Bucket) GetObjectRequest(key string, opts ...option.GetObjectInput) (*request.Request, *s3.GetObjectOutput) {
+	req := &s3.GetObjectInput{
+		Bucket: b.Name,
+		Key:    aws.String(key),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.GetObjectRequest(req)
 }
 
 // HeadObject retrieves an object metadata for key.

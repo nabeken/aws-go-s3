@@ -84,6 +84,20 @@ func (s *BucketSuite) TestObject() {
 			s.Equal(s.testdata, body)
 		}
 
+		// Get the object via object request and assert its metadata and content
+		{
+			req, object := s.bucket.GetObjectRequest(key)
+			s.Require().NoError(req.Send())
+
+			body, err := ioutil.ReadAll(object.Body)
+			s.Require().NoError(err)
+			defer object.Body.Close()
+
+			s.Equal(ct, *object.ContentType)
+			s.Equal(cl, *object.ContentLength)
+			s.Equal(s.testdata, body)
+		}
+
 		// The object must exist
 		{
 			exists, err := s.bucket.ExistsObject(key)
