@@ -17,6 +17,14 @@ func ListDelimiter(delim string) ListObjectsInput {
 	}
 }
 
+// ListPrefix returns a ListObjectsInput that changes a prefix in
+// s3.ListObjectsInput.
+func ListPrefix(prefix string) ListObjectsInput {
+	return func(req *s3.ListObjectsInput) {
+		req.Prefix = aws.String(prefix)
+	}
+}
+
 // ListEncodingType returns a ListObjectsInput that changes a EncodingType in
 // s3.ListObjectsInput.
 func ListEncodingType(typ string) ListObjectsInput {
