@@ -10,7 +10,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3iface"
-
 	"github.com/nabeken/aws-go-s3/bucket/option"
 )
 
