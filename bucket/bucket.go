@@ -120,6 +120,19 @@ func (b *Bucket) DeleteObject(key string) (*s3.DeleteObjectOutput, error) {
 	return b.S3.DeleteObject(req)
 }
 
+// DeleteObjects deletes each object for the given identifiers.
+// A maximum of 1000 objects can be deleted at a time with this method.
+func (b *Bucket) DeleteObjects(identifiers []*s3.ObjectIdentifier) (*s3.DeleteObjectsOutput, error) {
+	req := &s3.DeleteObjectsInput{
+		Bucket: b.Name,
+		Delete: &s3.Delete{
+			Objects: identifiers,
+		},
+	}
+
+	return b.S3.DeleteObjects(req)
+}
+
 // ListObjects lists objects that has prefix.
 func (b *Bucket) ListObjects(prefix string, opts ...option.ListObjectsInput) (*s3.ListObjectsOutput, error) {
 	req := &s3.ListObjectsInput{
