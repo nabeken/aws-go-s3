@@ -147,6 +147,25 @@ func (b *Bucket) ListObjects(prefix string, opts ...option.ListObjectsInput) (*s
 	return b.S3.ListObjects(req)
 }
 
+// ListObjectsV2PagesWithContext will page through objects with the given prefix.
+func (b *Bucket) ListObjectsV2PagesWithContext(
+	ctx aws.Context,
+	prefix string,
+	pageFunc func(*s3.ListObjectsV2Output, bool) bool,
+	opts ...option.ListObjectsV2Input,
+) error {
+	req := &s3.ListObjectsV2Input{
+		Bucket: b.Name,
+		Prefix: aws.String(prefix),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.ListObjectsV2PagesWithContext(ctx, req, pageFunc)
+}
+
 // CopyObject copies an object within the bucket.
 func (b *Bucket) CopyObject(dest, src string, opts ...option.CopyObjectInput) (*s3.CopyObjectOutput, error) {
 	req := &s3.CopyObjectInput{
