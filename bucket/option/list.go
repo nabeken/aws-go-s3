@@ -13,6 +13,10 @@ type ListObjectsInput func(req *s3.ListObjectsInput)
 // s3.ListObjectsV2Input.
 type ListObjectsV2Input func(req *s3.ListObjectsV2Input)
 
+// The ListObjectVersionsInput type is an adapter to change a parameter in
+// s3.ListObjectVersionsInput.
+type ListObjectVersionsInput func(req *s3.ListObjectVersionsInput)
+
 // ListDelimiter returns a ListObjectsInput that changes a delimiter in
 // s3.ListObjectsInput.
 func ListDelimiter(delim string) ListObjectsInput {
