@@ -166,6 +166,25 @@ func (b *Bucket) ListObjectsV2PagesWithContext(
 	return b.S3.ListObjectsV2PagesWithContext(ctx, req, pageFunc)
 }
 
+// ListObjectVersionsPagesWithContext will page through all versions of all objects with the given prefix.
+func (b *Bucket) ListObjectVersionsPagesWithContext(
+	ctx aws.Context,
+	prefix string,
+	pageFunc func(*s3.ListObjectVersionsOutput, bool) bool,
+	opts ...option.ListObjectVersionsInput,
+) error {
+	req := &s3.ListObjectVersionsInput{
+		Bucket: b.Name,
+		Prefix: aws.String(prefix),
+	}
+
+	for _, f := range opts {
+		f(req)
+	}
+
+	return b.S3.ListObjectVersionsPagesWithContext(ctx, req, pageFunc)
+}
+
 // CopyObject copies an object within the bucket.
 func (b *Bucket) CopyObject(dest, src string, opts ...option.CopyObjectInput) (*s3.CopyObjectOutput, error) {
 	req := &s3.CopyObjectInput{
