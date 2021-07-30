@@ -17,6 +17,13 @@ func SSEKMSKeyID(keyID string) PutObjectInput {
 	}
 }
 
+// SSES3 returns a PutObjectInput that uses SSE-S3 (AES256) in S3.
+func SSES3() PutObjectInput {
+	return func(req *s3.PutObjectInput) {
+		req.ServerSideEncryption = aws.String("AES256")
+	}
+}
+
 // ACLPrivate returns a PutObjectInput that set ACL private.
 func ACLPrivate() PutObjectInput {
 	return func(req *s3.PutObjectInput) {
