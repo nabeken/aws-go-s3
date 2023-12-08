@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.8](https://github.com/nabeken/aws-go-s3/compare/v0.1.7...v0.1.8) (2023-12-08)
+
+
+### Bug Fixes
+
+* **deps:** update actions/setup-go action to v5 ([#50](https://github.com/nabeken/aws-go-s3/issues/50)) ([98fd70a](https://github.com/nabeken/aws-go-s3/commit/98fd70a708da6d10814c2b69abf549e7f704d13f))
+* **deps:** update dependency golang to v1.21.4 ([a9007f2](https://github.com/nabeken/aws-go-s3/commit/a9007f2ebdb875d831202e6be364ea4517a82ed7))
+* **deps:** update dependency golang to v1.21.5 ([bae03e5](https://github.com/nabeken/aws-go-s3/commit/bae03e5c026e6b82054a33913b633312c514bff6))
+* **deps:** update google-github-actions/release-please-action digest to db8f2c6 ([#41](https://github.com/nabeken/aws-go-s3/issues/41)) ([b5761c5](https://github.com/nabeken/aws-go-s3/commit/b5761c58dcf9cf20302f5727e9fc092affc01043))
+* **deps:** update module github.com/aws/aws-sdk-go to v1.47.9 ([95e091f](https://github.com/nabeken/aws-go-s3/commit/95e091f38baf289dac8909530b89567d2b7ef40e))
+* **deps:** update module github.com/aws/aws-sdk-go to v1.48.0 ([d509d1e](https://github.com/nabeken/aws-go-s3/commit/d509d1ea0a6aaef324de75a5852a54648cbeadc6))
+* **deps:** update module github.com/aws/aws-sdk-go to v1.48.11 ([69dc1cc](https://github.com/nabeken/aws-go-s3/commit/69dc1cc38cd15ab1e8a925538665ecfc542352e1))
+* **deps:** update module github.com/aws/aws-sdk-go to v1.48.16 ([2eb296f](https://github.com/nabeken/aws-go-s3/commit/2eb296fe798b4c41ca91910e1686e760a6ac6e90))
+* **deps:** update module github.com/aws/aws-sdk-go to v1.48.3 ([ac85101](https://github.com/nabeken/aws-go-s3/commit/ac85101d69fe409cf74995bd65f2a1fe8e2a894c))
+
 ## [0.1.7](https://github.com/nabeken/aws-go-s3/compare/v0.1.6...v0.1.7) (2023-11-06)
 
 
