@@ -15,15 +15,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
     - name: Set up Go
       uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5
       with:
         go-version: '${{ env.GO_VERSION }}'
       id: go
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
     - name: Get dependencies
       run: |
@@ -32,5 +31,11 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+    - name: Launch Minio
+      run: |
+        docker run -d -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=aws-go-s3 -e MINIO_ROOT_PASSWORD=aws-go-s3 minio/minio server /data --console-address ":9001"
+
     - name: Test
-      run: go test -short -v -cover ./...
+      run: go test -v -cover ./...
+      env:
+        AWS_REGION: 'local'
