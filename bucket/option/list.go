@@ -1,8 +1,9 @@
 package option
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 )
 
 // The ListObjectsInput type is an adapter to change a parameter in
@@ -27,9 +28,9 @@ func ListDelimiter(delim string) ListObjectsInput {
 
 // ListEncodingType returns a ListObjectsInput that changes a EncodingType in
 // s3.ListObjectsInput.
-func ListEncodingType(typ string) ListObjectsInput {
+func ListEncodingType(typ types.EncodingType) ListObjectsInput {
 	return func(req *s3.ListObjectsInput) {
-		req.EncodingType = aws.String(typ)
+		req.EncodingType = typ
 	}
 }
 
