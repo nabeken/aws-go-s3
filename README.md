@@ -15,6 +15,18 @@ Usage:
 import "github.com/nabeken/aws-go-s3/v2"
 ```
 
+### Migration to v2
+
+v2 has the breaking changes noted below.
+
+**Paginator**:
+
+`Bucket#BuildListObjectsV2PaginatorFactory` allows to build `*s3.ListObjectsV2Paginator` through `s3.ListObjectsV2PaginatorFactory`. Please refer to [the test code](https://github.com/nabeken/aws-go-s3/blob/master/bucket/bucket_test.go#L164) for the details.
+
+**Presigned Request**:
+
+`Bucket#PresignClient` allows to build a wrapper of `*s3.PresignClient`. Please refer to [the test code](https://github.com/nabeken/aws-go-s3/blob/master/bucket/bucket_test.go#L277) for the details.
+
 ## v0
 
 If you want to use this library with `aws-sdk-go`, please use v0 version of the library.
