@@ -21,7 +21,7 @@ v2 has the breaking changes noted below.
 
 **Paginator**:
 
-`Bucket#BuildListObjectsV2PaginatorFactory` allows to build `*s3.ListObjectsV2Paginator` through `s3.ListObjectsV2PaginatorFactory`. Please refer to [the test code](https://github.com/nabeken/aws-go-s3/blob/master/bucket/bucket_test.go#L164) for the details.
+`Bucket#BuildListObjectsV2PaginatorFactory` allows to build `*s3.ListObjectsV2Paginator` through `Bucket.ListObjectsV2PaginatorFactory`. Please refer to [the test code](https://github.com/nabeken/aws-go-s3/blob/master/bucket/bucket_test.go#L164) for the details.
 
 **Presigned Request**:
 
