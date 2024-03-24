@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/nabeken/aws-go-s3/compare/v2.0.0...v2.0.1) (2024-03-24)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([456f5c4](https://github.com/nabeken/aws-go-s3/commit/456f5c448b1ea77577e117c460752975f81be786))
+* **deps:** update nabeken/go-github-apps digest to 6eb3a08 ([#80](https://github.com/nabeken/aws-go-s3/issues/80)) ([95820e3](https://github.com/nabeken/aws-go-s3/commit/95820e3e69f139890a00925b69b86119e480f828))
+
 ## [2.0.0](https://github.com/nabeken/aws-go-s3/compare/v0.1.7...v2.0.0) (2024-03-18)
 
 
