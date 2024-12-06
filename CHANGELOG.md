@@ -1,5 +1,37 @@
 # Changelog
 
+## [2.0.2](https://github.com/nabeken/aws-go-s3/compare/v2.0.1...v2.0.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* **deps:** pin actions/create-github-app-token action to 31c86eb ([#114](https://github.com/nabeken/aws-go-s3/issues/114)) ([51933e3](https://github.com/nabeken/aws-go-s3/commit/51933e3d3dcc658fa48447eda246ff310c68c063))
+* **deps:** update actions/checkout digest to 11bd719 ([8502234](https://github.com/nabeken/aws-go-s3/commit/85022347c6610295bcb5d7ab8751a762727e8b46))
+* **deps:** update actions/checkout digest to eef6144 ([e824252](https://github.com/nabeken/aws-go-s3/commit/e824252b3755df5e26712033b98cdd9545b0b60e))
+* **deps:** update actions/create-github-app-token digest to 3378cda ([#117](https://github.com/nabeken/aws-go-s3/issues/117)) ([9b16ebb](https://github.com/nabeken/aws-go-s3/commit/9b16ebb51f22b96c010583cb92fc295198fcae49))
+* **deps:** update actions/create-github-app-token digest to 5d869da ([#120](https://github.com/nabeken/aws-go-s3/issues/120)) ([bcab270](https://github.com/nabeken/aws-go-s3/commit/bcab2702722c49a02808b5c23bccaf72ba64b9ed))
+* **deps:** update actions/setup-go digest to 41dfa10 ([#131](https://github.com/nabeken/aws-go-s3/issues/131)) ([a94cebf](https://github.com/nabeken/aws-go-s3/commit/a94cebf328fe980be96d89c059bade8bacbed24d))
+* **deps:** update aws-sdk-go-v2 monorepo ([26b80c8](https://github.com/nabeken/aws-go-s3/commit/26b80c8d65b644a91be3e12c244a70ebee354c39))
+* **deps:** update aws-sdk-go-v2 monorepo ([a54f5b0](https://github.com/nabeken/aws-go-s3/commit/a54f5b04b071fe6c465a525f3c9ea949ebf9912b))
+* **deps:** update aws-sdk-go-v2 monorepo ([a25fb96](https://github.com/nabeken/aws-go-s3/commit/a25fb9655f12cd0fcca810f2cdd5249f454bf445))
+* **deps:** update aws-sdk-go-v2 monorepo ([60c4501](https://github.com/nabeken/aws-go-s3/commit/60c4501b44ff7453c17f018defb9a741110f81fc))
+* **deps:** update aws-sdk-go-v2 monorepo ([2183bd7](https://github.com/nabeken/aws-go-s3/commit/2183bd738fa8da46463317e9cc1bf2fa334ac02f))
+* **deps:** update aws-sdk-go-v2 monorepo ([b8a0c0d](https://github.com/nabeken/aws-go-s3/commit/b8a0c0d9332b6fb1b356c0d6488a7c8836d7372d))
+* **deps:** update aws-sdk-go-v2 monorepo ([bae14b7](https://github.com/nabeken/aws-go-s3/commit/bae14b7b2c0b585328b46325fa4ecd9e874464b4))
+* **deps:** update aws-sdk-go-v2 monorepo ([#135](https://github.com/nabeken/aws-go-s3/issues/135)) ([31f35b2](https://github.com/nabeken/aws-go-s3/commit/31f35b215e27c03d373bd40b8b9cc83c001922c6))
+* **deps:** update aws-sdk-go-v2 monorepo ([#136](https://github.com/nabeken/aws-go-s3/issues/136)) ([3c84549](https://github.com/nabeken/aws-go-s3/commit/3c845499851b2b37eed2908424cd2ffa134a162f))
+* **deps:** update aws-sdk-go-v2 monorepo ([#138](https://github.com/nabeken/aws-go-s3/issues/138)) ([c25333b](https://github.com/nabeken/aws-go-s3/commit/c25333bd55111b01630d3444a42a888e95ab7643))
+* **deps:** update aws-sdk-go-v2 monorepo ([#142](https://github.com/nabeken/aws-go-s3/issues/142)) ([c04177f](https://github.com/nabeken/aws-go-s3/commit/c04177f4467980412e06bf922614cc6cfd813b2e))
+* **deps:** update dependency golang to v1.23.1 ([8254a86](https://github.com/nabeken/aws-go-s3/commit/8254a863c2d20904b916ea5a8e8812069cb19d0b))
+* **deps:** update dependency golang to v1.23.2 ([1cf7371](https://github.com/nabeken/aws-go-s3/commit/1cf7371993be1da8c37e3b8d13c504790f7966d9))
+* **deps:** update dependency golang to v1.23.3 ([f45d778](https://github.com/nabeken/aws-go-s3/commit/f45d77850218393b50f9249baeed452094a86caa))
+* **deps:** update dependency golang to v1.23.4 ([#141](https://github.com/nabeken/aws-go-s3/issues/141)) ([e17944a](https://github.com/nabeken/aws-go-s3/commit/e17944a73203895ccfec5b0fddde77803b8e444c))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.66.0 ([178c06e](https://github.com/nabeken/aws-go-s3/commit/178c06e5cf42b2d89f51ad13d45e9349fa57b8c0))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.66.1 ([cd8ce1b](https://github.com/nabeken/aws-go-s3/commit/cd8ce1b043cf6e75467e50433f4888329318aaae))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.69.0 ([#140](https://github.com/nabeken/aws-go-s3/issues/140)) ([deec182](https://github.com/nabeken/aws-go-s3/commit/deec1820b9c1023035eaf2849ca9f0e6283ba81e))
+* **deps:** update module github.com/aws/smithy-go to v1.22.1 ([#137](https://github.com/nabeken/aws-go-s3/issues/137)) ([090ac2d](https://github.com/nabeken/aws-go-s3/commit/090ac2d342f6d9ef8821c6d08c4147b2f51e2584))
+* **deps:** update module github.com/stretchr/testify to v1.10.0 ([#139](https://github.com/nabeken/aws-go-s3/issues/139)) ([1bda98e](https://github.com/nabeken/aws-go-s3/commit/1bda98edb6351528304c9de64124e3b836f76b3e))
+
 ## [2.0.1](https://github.com/nabeken/aws-go-s3/compare/v2.0.0...v2.0.1) (2024-08-25)
 
 
