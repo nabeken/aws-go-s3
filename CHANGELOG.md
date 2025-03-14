@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/nabeken/aws-go-s3/compare/v2.0.2...v2.0.3) (2025-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.78.2 ([#168](https://github.com/nabeken/aws-go-s3/issues/168)) ([0c4294a](https://github.com/nabeken/aws-go-s3/commit/0c4294a83570546f2fb8c4218c9a2e914d784124))
+
 ## [2.0.2](https://github.com/nabeken/aws-go-s3/compare/v2.0.1...v2.0.2) (2025-03-08)
 
 
