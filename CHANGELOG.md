@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.3](https://github.com/nabeken/aws-go-s3/compare/v2.0.2...v2.0.3) (2025-03-20)
+
+
+### Bug Fixes
+
+* **deps:** update actions/create-github-app-token digest to af35eda ([#171](https://github.com/nabeken/aws-go-s3/issues/171)) ([769738c](https://github.com/nabeken/aws-go-s3/commit/769738c4a1382fb30048873c125602d8703f6911))
+* **deps:** update actions/setup-go digest to 0aaccfd ([#170](https://github.com/nabeken/aws-go-s3/issues/170)) ([b0d1d0d](https://github.com/nabeken/aws-go-s3/commit/b0d1d0d79de822450b11d0b11defa34bcfabe716))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.78.2 ([#168](https://github.com/nabeken/aws-go-s3/issues/168)) ([0c4294a](https://github.com/nabeken/aws-go-s3/commit/0c4294a83570546f2fb8c4218c9a2e914d784124))
+
 ## [2.0.2](https://github.com/nabeken/aws-go-s3/compare/v2.0.1...v2.0.2) (2025-03-08)
 
 
