@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/nabeken/aws-go-s3/compare/v2.0.3...v2.0.4) (2026-03-27)
+
+
+### Bug Fixes
+
+* **deps:** update aws-sdk-go-v2 monorepo ([#272](https://github.com/nabeken/aws-go-s3/issues/272)) ([f89d176](https://github.com/nabeken/aws-go-s3/commit/f89d1763d7d3a1796e777ec240c792bcc2340142))
+
 ## [2.0.3](https://github.com/nabeken/aws-go-s3/compare/v2.0.2...v2.0.3) (2026-03-14)
 
 
