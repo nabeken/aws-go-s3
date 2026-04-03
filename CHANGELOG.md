@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.4](https://github.com/nabeken/aws-go-s3/compare/v2.0.3...v2.0.4) (2026-04-03)
+
+
+### Bug Fixes
+
+* **deps:** update actions/setup-go digest to 4a36011 ([#274](https://github.com/nabeken/aws-go-s3/issues/274)) ([5a85e50](https://github.com/nabeken/aws-go-s3/commit/5a85e50f7618df64c552c3bf24ae97308c0afa3f))
+* **deps:** update aws-sdk-go-v2 monorepo ([#272](https://github.com/nabeken/aws-go-s3/issues/272)) ([f89d176](https://github.com/nabeken/aws-go-s3/commit/f89d1763d7d3a1796e777ec240c792bcc2340142))
+* **deps:** update aws-sdk-go-v2 monorepo ([#275](https://github.com/nabeken/aws-go-s3/issues/275)) ([12a0cf9](https://github.com/nabeken/aws-go-s3/commit/12a0cf962a2c042d578a33864bfee96942bd123e))
+* **deps:** update module github.com/aws/smithy-go to v1.24.3 ([#276](https://github.com/nabeken/aws-go-s3/issues/276)) ([186c023](https://github.com/nabeken/aws-go-s3/commit/186c023b5df86a1724cc397137b3381cc01c95f4))
+
 ## [2.0.3](https://github.com/nabeken/aws-go-s3/compare/v2.0.2...v2.0.3) (2026-03-14)
 
 
