@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.0.4](https://github.com/nabeken/aws-go-s3/compare/v2.0.3...v2.0.4) (2026-04-17)
+
+
+### Bug Fixes
+
+* **deps:** update actions/create-github-app-token digest to 1b10c78 ([#279](https://github.com/nabeken/aws-go-s3/issues/279)) ([bce1225](https://github.com/nabeken/aws-go-s3/commit/bce122559526abde83a4bdc58f214e5ac29562b5))
+* **deps:** update actions/create-github-app-token digest to 7bd0371 ([#278](https://github.com/nabeken/aws-go-s3/issues/278)) ([454a3e0](https://github.com/nabeken/aws-go-s3/commit/454a3e0068c961b449a0011b6c3ba4cb287ec57a))
+* **deps:** update actions/setup-go digest to 4a36011 ([#274](https://github.com/nabeken/aws-go-s3/issues/274)) ([5a85e50](https://github.com/nabeken/aws-go-s3/commit/5a85e50f7618df64c552c3bf24ae97308c0afa3f))
+* **deps:** update aws-sdk-go-v2 monorepo ([#272](https://github.com/nabeken/aws-go-s3/issues/272)) ([f89d176](https://github.com/nabeken/aws-go-s3/commit/f89d1763d7d3a1796e777ec240c792bcc2340142))
+* **deps:** update aws-sdk-go-v2 monorepo ([#275](https://github.com/nabeken/aws-go-s3/issues/275)) ([12a0cf9](https://github.com/nabeken/aws-go-s3/commit/12a0cf962a2c042d578a33864bfee96942bd123e))
+* **deps:** update aws-sdk-go-v2 monorepo ([#281](https://github.com/nabeken/aws-go-s3/issues/281)) ([72f0f09](https://github.com/nabeken/aws-go-s3/commit/72f0f09ac9e1c4946290492bc3f3fa3b71775945))
+* **deps:** update googleapis/release-please-action digest to 5c625bf ([#280](https://github.com/nabeken/aws-go-s3/issues/280)) ([fe25267](https://github.com/nabeken/aws-go-s3/commit/fe2526770bf394010738dfcfc533b1b2fde02a1f))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/s3 to v1.99.0 ([#277](https://github.com/nabeken/aws-go-s3/issues/277)) ([5670f8e](https://github.com/nabeken/aws-go-s3/commit/5670f8ee69f78a3928a1746a3226152da00d1dc7))
+* **deps:** update module github.com/aws/smithy-go to v1.24.3 ([#276](https://github.com/nabeken/aws-go-s3/issues/276)) ([186c023](https://github.com/nabeken/aws-go-s3/commit/186c023b5df86a1724cc397137b3381cc01c95f4))
+
 ## [2.0.3](https://github.com/nabeken/aws-go-s3/compare/v2.0.2...v2.0.3) (2026-03-14)
 
 
