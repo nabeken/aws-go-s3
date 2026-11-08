@@ -31,9 +31,17 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    - name: Launch Minio
+    - name: Launch SeaweedFS
       run: |
-        docker run -d -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=aws-go-s3 -e MINIO_ROOT_PASSWORD=aws-go-s3 minio/minio server /data --console-address ":9001"
+        docker run -d --name seaweedfs -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 chrislusf/seaweedfs:4.50 mini -dir=/data
+        # wait for the S3 gateway to be ready (it responds 403 to anonymous requests)
+        for i in $(seq 1 60); do
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8333/ || true)
+          if [ "${code}" = "403" ]; then exit 0; fi
+          sleep 1
+        done
+        docker logs seaweedfs
+        exit 1
 
     - name: Test
       run: go test -v -cover ./...
