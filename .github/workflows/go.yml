@@ -10,7 +10,7 @@ env:
   # renovate: datasource=golang-version depName=golang
   GO_VERSION: '1.26.6'
   # renovate: datasource=docker depName=chrislusf/seaweedfs
-  SEAWEEDFS_VERSION: '4.50'
+  SEAWEEDFS_VERSION: '4.52'
 
 jobs:
   build:

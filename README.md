@@ -42,7 +42,7 @@ You can run the test locally with [SeaweedFS](https://github.com/seaweedfs/seawe
 
 Launch SeaweedFS:
 ```sh
-docker run --rm -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 chrislusf/seaweedfs:4.50 mini -dir=/data
+docker run --rm -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 chrislusf/seaweedfs:4.52 mini -dir=/data
 ```
 
 then run the test:
