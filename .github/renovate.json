@@ -9,5 +9,25 @@
     "github>nabeken/renovate-config-oss:semanticCommitsFixDeps",
     "github>nabeken/renovate-config-oss:automergeGoPatch",
     "github>nabeken/renovate-config-oss:groupGithubActions"
+  ],
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Keep the SeaweedFS image in the README's local testing instructions in sync with CI",
+      "managerFilePatterns": ["/^README\\.md$/"],
+      "matchStrings": ["chrislusf/seaweedfs:(?<currentValue>\\d+\\.\\d+)\\s"],
+      "depNameTemplate": "chrislusf/seaweedfs",
+      "datasourceTemplate": "docker"
+    }
+  ],
+
+  "packageRules": [
+    {
+      "description": "SeaweedFS for integration tests: only follow plain X.Y tags, not variants such as 4.50_full or 4.50_large_disk",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["chrislusf/seaweedfs"],
+      "allowedVersions": "/^\\d+\\.\\d+$/"
+    }
   ]
 }

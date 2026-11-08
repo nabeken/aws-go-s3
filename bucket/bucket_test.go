@@ -184,11 +184,15 @@ func TestBucketPaginator(t *testing.T) {
 
 	var keys []string
 
-	for i := 0; i < 2000; i++ {
+	// MaxKeys is 1 below, so this is enough to exercise pagination. Keep it
+	// small: listing object versions one per page is slow on SeaweedFS.
+	const numKeys = 200
+
+	for i := 0; i < numKeys; i++ {
 		keys = append(keys, fmt.Sprintf("%s/key-%d.json", prefix, i))
 	}
 
-	t.Run("Put 2000 objects twice for the paginator testing", func(t *testing.T) {
+	t.Run("Put the objects twice for the paginator testing", func(t *testing.T) {
 		for i := 0; i < 2; i++ {
 			for _, key := range keys {
 				_, err := b.PutObject(
@@ -232,8 +236,8 @@ func TestBucketPaginator(t *testing.T) {
 			// t.Logf("Debug paginator:%d / %d /  %d\n", cnt, len(output.Contents), len(actualKeys))
 		}
 
-		// the last call contains an empty list that indicates the paginator is at the last page
-		assert.Equal(t, len(keys)+1, cnt)
+		// the last page holds the last key with IsTruncated=false (as Amazon S3 does)
+		assert.Equal(t, len(keys), cnt)
 		assert.ElementsMatch(t, keys, actualKeys)
 	})
 
@@ -264,7 +268,7 @@ func TestBucketPaginator(t *testing.T) {
 			// t.Logf("Debug paginator:%d / %d /  %d\n", cnt, len(output.Versions), len(actualKeys))
 		}
 
-		// MinIO seems to return the last page at the 4000th call
+		// one version per page, so the last page is returned at the len(keys)*2th call
 		assert.Equal(t, len(keys)*2, cnt)
 
 		versioningKeys := append([]string{}, keys...)
@@ -407,7 +411,7 @@ func newTestBucket(t *testing.T) *bucket.Bucket {
 
 	bucketName := fmt.Sprintf("aws-go-s3-testing-%d", time.Now().UnixNano())
 
-	s3c := newMinioS3Client()
+	s3c := newTestS3Client()
 	ctx := context.TODO()
 
 	_, err := s3c.CreateBucket(ctx, &s3.CreateBucketInput{
@@ -419,10 +423,10 @@ func newTestBucket(t *testing.T) *bucket.Bucket {
 	return bucket.New(s3c, bucketName)
 }
 
-func newMinioS3Client() *s3.Client {
+func newTestS3Client() *s3.Client {
 	return s3.New(s3.Options{
 		Credentials:  aws.NewCredentialsCache(credentials.NewStaticCredentialsProvider("aws-go-s3", "aws-go-s3", "")),
 		Region:       "local",
-		BaseEndpoint: aws.String("http://127.0.0.1:9000"),
+		BaseEndpoint: aws.String("http://127.0.0.1:8333"),
 	})
 }

@@ -38,11 +38,11 @@ import "github.com/nabeken/aws-go-s3"
 
 ## Testing locally
 
-You can run the test locally with Minio. Each test run will create a new bucket for clean testing.
+You can run the test locally with [SeaweedFS](https://github.com/seaweedfs/seaweedfs). Each test run will create a new bucket for clean testing.
 
-Launch the minio:
+Launch SeaweedFS:
 ```sh
-docker run --rm -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=aws-go-s3 -e MINIO_ROOT_PASSWORD=aws-go-s3 minio/minio server /data --console-address ":9001"
+docker run --rm -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 chrislusf/seaweedfs:4.52 mini -dir=/data
 ```
 
 then run the test:
