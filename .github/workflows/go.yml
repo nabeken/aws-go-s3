@@ -9,6 +9,8 @@ on:
 env:
   # renovate: datasource=golang-version depName=golang
   GO_VERSION: '1.26.6'
+  # renovate: datasource=docker depName=chrislusf/seaweedfs
+  SEAWEEDFS_VERSION: '4.50'
 
 jobs:
   build:
@@ -33,7 +35,7 @@ jobs:
 
     - name: Launch SeaweedFS
       run: |
-        docker run -d --name seaweedfs -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 chrislusf/seaweedfs:4.50 mini -dir=/data
+        docker run -d --name seaweedfs -p 8333:8333 -e AWS_ACCESS_KEY_ID=aws-go-s3 -e AWS_SECRET_ACCESS_KEY=aws-go-s3 "chrislusf/seaweedfs:${SEAWEEDFS_VERSION}" mini -dir=/data
         # wait for the S3 gateway to be ready (it responds 403 to anonymous requests)
         for i in $(seq 1 60); do
           code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8333/ || true)

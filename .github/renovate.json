@@ -9,5 +9,14 @@
     "github>nabeken/renovate-config-oss:semanticCommitsFixDeps",
     "github>nabeken/renovate-config-oss:automergeGoPatch",
     "github>nabeken/renovate-config-oss:groupGithubActions"
+  ],
+
+  "packageRules": [
+    {
+      "description": "SeaweedFS for integration tests: only follow plain X.Y tags, not variants such as 4.50_full or 4.50_large_disk",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["chrislusf/seaweedfs"],
+      "allowedVersions": "/^\\d+\\.\\d+$/"
+    }
   ]
 }
