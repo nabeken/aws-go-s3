@@ -28,6 +28,13 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": ["chrislusf/seaweedfs"],
       "allowedVersions": "/^\\d+\\.\\d+$/"
+    },
+    {
+      "description": "SeaweedFS is only used for integration tests, so automerge minor and patch upgrades once CI passes",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["chrislusf/seaweedfs"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     }
   ]
 }
