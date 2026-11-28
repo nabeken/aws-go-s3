@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.5](https://github.com/nabeken/aws-go-s3/compare/v2.0.4...v2.0.5) (2026-11-28)
+
+
+### Bug Fixes
+
+* **deps:** update aws-sdk-go-v2 monorepo ([#336](https://github.com/nabeken/aws-go-s3/issues/336)) ([3817d0d](https://github.com/nabeken/aws-go-s3/commit/3817d0dd08728fcc9a5b3274a9fbdbac3b6e02d0))
+* **deps:** update aws-sdk-go-v2 monorepo ([#339](https://github.com/nabeken/aws-go-s3/issues/339)) ([a68eecc](https://github.com/nabeken/aws-go-s3/commit/a68eecc72cf6d50758072039522d1e2f6908be06))
+* **deps:** update chrislusf/seaweedfs docker tag to v4.55 ([#334](https://github.com/nabeken/aws-go-s3/issues/334)) ([3071410](https://github.com/nabeken/aws-go-s3/commit/307141056712a1e1aec4dda8c0721f07181f1612))
+* **deps:** update module github.com/aws/smithy-go to v1.28.11 ([#337](https://github.com/nabeken/aws-go-s3/issues/337)) ([50198ed](https://github.com/nabeken/aws-go-s3/commit/50198edc203e9c5d070d95db03bddfdcd08b2953))
+
 ## [2.0.4](https://github.com/nabeken/aws-go-s3/compare/v2.0.3...v2.0.4) (2026-11-21)
 
 
